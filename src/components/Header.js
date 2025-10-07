@@ -54,7 +54,7 @@ export default function Header() {
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
             </div>
-            <span className="text-white text-xs sm:text-sm hidden md:block">hi@alfayad.dev</span>
+            <span className="text-white text-xs sm:text-sm hidden md:block">alfayadshameer056@gmail.com</span>
           </div>
 
           {/* Center - Navigation (hidden on mobile, shown on desktop) */}
@@ -197,7 +197,7 @@ export default function Header() {
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                       </svg>
                     </div>
-                    <span className="text-white text-sm">hi@alfayad.dev</span>
+                    <span className="text-white text-sm">alfayadshameer056@gmail.com</span>
                   </div>
                   <CompactLanguageToggle />
                 </div>
