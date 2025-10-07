@@ -36,6 +36,17 @@ export default function SkillsVisualization() {
     { name: 'Project Mgmt', level: 8, color: '#FF9900' }
   ], []);
 
+  const animateProgressBars = useCallback(() => {
+    skills.forEach((skill, index) => {
+      setTimeout(() => {
+        setAnimatedPercentages(prev => ({
+          ...prev,
+          [skill.name]: skill.percentage
+        }));
+      }, index * 100);
+    });
+  }, [skills]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -65,17 +76,6 @@ export default function SkillsVisualization() {
       }
     };
   }, [animateProgressBars]);
-
-  const animateProgressBars = useCallback(() => {
-    skills.forEach((skill, index) => {
-      setTimeout(() => {
-        setAnimatedPercentages(prev => ({
-          ...prev,
-          [skill.name]: skill.percentage
-        }));
-      }, index * 100);
-    });
-  }, [skills]);
 
   const ProgressBar = ({ skill }) => {
     const percentage = animatedPercentages[skill.name] || 0;
