@@ -20,7 +20,7 @@ export const metadata = {
   openGraph: {
     title: "Alfayad - Full Stack Developer",
     description: "Portfolio of Alfayad, a passionate full-stack developer specializing in modern web technologies and innovative solutions.",
-    url: "https://alfayad.dev",
+    url: "https://alfayad.vercel.app",
     siteName: "Alfayad Portfolio",
     images: [
       {
