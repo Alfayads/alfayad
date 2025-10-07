@@ -17,6 +17,19 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Alfayad - Full Stack Developer",
   description: "Portfolio of Alfayad, a passionate full-stack developer specializing in modern web technologies and innovative solutions.",
+  keywords: "Alfayad, Full Stack Developer, Portfolio, Web Development, React, Next.js, JavaScript, TypeScript",
+  authors: [{ name: "Alfayad" }],
+  creator: "Alfayad",
+  publisher: "Alfayad",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://alfayad.vercel.app"),
+  alternates: {
+    canonical: "https://alfayad.vercel.app",
+  },
   openGraph: {
     title: "Alfayad - Full Stack Developer",
     description: "Portfolio of Alfayad, a passionate full-stack developer specializing in modern web technologies and innovative solutions.",
@@ -24,10 +37,11 @@ export const metadata = {
     siteName: "Alfayad Portfolio",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://alfayad.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Alfayad - Full Stack Developer Portfolio",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -37,7 +51,8 @@ export const metadata = {
     card: "summary_large_image",
     title: "Alfayad - Full Stack Developer",
     description: "Portfolio of Alfayad, a passionate full-stack developer specializing in modern web technologies and innovative solutions.",
-    images: ["/og-image.png"],
+    images: ["https://alfayad.vercel.app/og-image.png"],
+    creator: "@alfayad",
   },
   robots: {
     index: true,
@@ -49,6 +64,9 @@ export const metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "your-google-verification-code", // Add your Google Search Console verification code
   },
 };
 
