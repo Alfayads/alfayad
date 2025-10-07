@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import ClickSpark from "@/components/ClickSpark";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,11 +20,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
+    
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      >   <ClickSpark
+  sparkColor='#fff'
+  sparkSize={10}
+  sparkRadius={15}
+  sparkCount={8}
+  duration={400}
+>
+        <Header />
         {children}
+        </ClickSpark>
       </body>
     </html>
   );
