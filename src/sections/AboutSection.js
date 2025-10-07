@@ -1,11 +1,13 @@
 'use client';
 
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from '@/context/LanguageContext';
 import Image from "next/image";
 
 export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,7 +40,7 @@ export default function AboutSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-wider">
-            ABOUT
+            {t('aboutTitle')}
           </h2>
           <div className="w-16 sm:w-20 md:w-24 h-1 bg-red-500 mx-auto"></div>
         </div>
@@ -52,13 +54,13 @@ export default function AboutSection() {
           }`}>
             <div className="relative flex justify-center lg:justify-start">
               {/* Main image container */}
-              <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[400px] lg:w-full lg:h-[500px] overflow-hidden">
+              <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[400px] lg:w-full lg:h-[500px] overflow-hidden flex items-center justify-center">
                 <Image 
                   src="/fayad-2-black.png" 
                   alt="Fayad Profile" 
                   width={350} 
                   height={400}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-52 md:w-80"
                 />
                 {/* Red overlay filter */}
                 <div className="absolute inset-0 bg-red-600/30 mix-blend-multiply"></div>
@@ -82,22 +84,12 @@ export default function AboutSection() {
             {/* Introduction */}
             <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wider">
-                CREATIVE DEVELOPER
+                {t('aboutSubtitle')}
               </h3>
               
               <div className="space-y-3 sm:space-y-4 text-gray-300 leading-relaxed">
                 <p className="text-base sm:text-lg">
-                  I am a passionate Full Stack Developer and UI/UX Designer who believes 
-                  in the power of creative technology. Every project is an opportunity 
-                  to blend innovation with artistry.
-                </p>
-                <p className="text-base sm:text-lg">
-                  With expertise in modern web technologies, I create digital experiences 
-                  that not only function flawlessly but also tell compelling visual stories.
-                </p>
-                <p className="text-base sm:text-lg">
-                  Based in India, I work with clients worldwide to bring their visions 
-                  to life through code, design, and creativity.
+                  {t('aboutDescription')}
                 </p>
               </div>
             </div>
@@ -131,7 +123,7 @@ export default function AboutSection() {
             {/* Call to Action */}
             <div className="pt-6 sm:pt-8 text-center lg:text-left">
               <button className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-red-500 text-red-500 font-semibold tracking-wider transition-all duration-300 hover:bg-red-500 hover:text-black overflow-hidden text-sm sm:text-base">
-                <span className="relative z-10">VIEW MY WORK</span>
+                <span className="relative z-10">{t('aboutCta')}</span>
                 <div className="absolute inset-0 bg-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </button>
             </div>
@@ -143,7 +135,7 @@ export default function AboutSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="text-center space-y-1 sm:space-y-2">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-500">50+</div>
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-500">30+</div>
             <div className="text-gray-400 text-xs sm:text-sm tracking-wider">PROJECTS</div>
           </div>
           <div className="text-center space-y-1 sm:space-y-2">

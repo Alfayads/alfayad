@@ -1,10 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import LanguageToggle, { CompactLanguageToggle } from './LanguageToggle';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,8 +59,8 @@ export default function Header() {
 
           {/* Center - Navigation (hidden on mobile, shown on desktop) */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <a 
-              href="#works" 
+            <Link 
+              href="/" 
               className={`text-sm transition-colors duration-300 ${
                 isScrolled 
                   ? 'text-white hover:text-red-400' 
@@ -64,10 +68,21 @@ export default function Header() {
               }`}
               onClick={closeMobileMenu}
             >
-              Works
+              {t('home')}
+            </Link>
+            <a 
+              href="/work" 
+              className={`text-sm transition-colors duration-300 ${
+                isScrolled 
+                  ? 'text-white hover:text-red-400' 
+                  : 'text-white hover:text-gray-300'
+              }`}
+              onClick={closeMobileMenu}
+            >
+              {t('work')}
             </a>
             <a 
-              href="#resume" 
+              href="/resume" 
               className={`text-sm transition-colors duration-300 ${
                 isScrolled 
                   ? 'text-white hover:text-red-400' 
@@ -75,10 +90,10 @@ export default function Header() {
               }`}
               onClick={closeMobileMenu}
             >
-              Resume
+              {t('resume')}
             </a>
             <a 
-              href="#services" 
+              href="/services" 
               className={`text-sm transition-colors duration-300 ${
                 isScrolled 
                   ? 'text-white hover:text-red-400' 
@@ -86,10 +101,10 @@ export default function Header() {
               }`}
               onClick={closeMobileMenu}
             >
-              Services
+              {t('services')}
             </a>
             <a 
-              href="#contact" 
+              href="/contact" 
               className={`text-sm transition-colors duration-300 ${
                 isScrolled 
                   ? 'text-white hover:text-red-400' 
@@ -97,9 +112,12 @@ export default function Header() {
               }`}
               onClick={closeMobileMenu}
             >
-              Contact
+              {t('contact')}
             </a>
           </div>
+
+          {/* Language Toggle */}
+          <LanguageToggle className="hidden sm:block" />
 
           {/* Mobile menu button */}
           <button 
@@ -133,45 +151,55 @@ export default function Header() {
         }`}>
           <div className="bg-black/90 backdrop-blur-md rounded-2xl mt-4 p-6 border border-white/10">
             <div className="flex flex-col space-y-4">
-              <a 
-                href="#works" 
+            <Link 
+                href="/" 
                 className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"
                 onClick={closeMobileMenu}
               >
-                Works
+                {t('home')}
+              </Link>
+              <a 
+                href="/work" 
+                className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"
+                onClick={closeMobileMenu}
+              >
+                {t('work')}
               </a>
               <a 
-                href="#resume" 
+                href="/resume" 
                 className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"
                 onClick={closeMobileMenu}
               >
-                Resume
+                {t('resume')}
               </a>
               <a 
-                href="#services" 
+                href="/services" 
                 className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"
                 onClick={closeMobileMenu}
               >
-                Services
+                {t('services')}
               </a>
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"
                 onClick={closeMobileMenu}
               >
-                Contact
+                {t('contact')}
               </a>
               
-              {/* Mobile email */}
+              {/* Mobile language toggle and email */}
               <div className="pt-4 border-t border-white/10">
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 border border-white rounded-full flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 border border-white rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                      </svg>
+                    </div>
+                    <span className="text-white text-sm">hi@alfayad.dev</span>
                   </div>
-                  <span className="text-white text-sm">hi@alfayad.dev</span>
+                  <CompactLanguageToggle />
                 </div>
               </div>
             </div>

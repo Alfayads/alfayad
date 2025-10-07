@@ -1,11 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function SplashScreen({ onComplete }) {
   const [isVisible, setIsVisible] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const [animateOut, setAnimateOut] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Start intro animation
@@ -48,7 +50,7 @@ export default function SplashScreen({ onComplete }) {
           <div className={`mx-6 text-xs sm:text-sm md:text-base font-light text-white uppercase tracking-widest transition-all duration-1000 delay-300 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            DESIGNER
+            {t('designer')}
           </div>
         </div>
 
@@ -57,7 +59,7 @@ export default function SplashScreen({ onComplete }) {
           showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-wider">
-            ALFAYAD
+            {t('heroTitle')}
           </h1>
         </div>
 
@@ -66,7 +68,7 @@ export default function SplashScreen({ onComplete }) {
           <div className={`text-xs sm:text-sm md:text-base font-light text-white uppercase tracking-widest mr-6 transition-all duration-1000 delay-700 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}>
-            FULL STACK DEVELOPER
+            {t('heroSubtitle')}
           </div>
           <div className={`h-px bg-white transition-all duration-1000 ease-out delay-500 ${
             showContent ? 'w-16 sm:w-24 md:w-32' : 'w-0'

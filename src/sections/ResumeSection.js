@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Function to calculate experience duration
 const calculateExperienceDuration = (startDate, endDate = null) => {
@@ -48,6 +49,7 @@ export default function ResumeSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date());
   const sectionRef = useRef(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -126,7 +128,7 @@ export default function ResumeSection() {
               {/* Left Column - Personal Info */}
               <div className="lg:col-span-1">
                 <div className="mb-6 sm:mb-8">
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide">CONTACT</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide">{t('contact')}</h2>
                   <div className="w-8 sm:w-12 h-0.5 bg-red-500 mb-4 sm:mb-6"></div>
                   
                   <div className="mb-4 sm:mb-6">
@@ -159,7 +161,7 @@ export default function ResumeSection() {
 
                 {/* Experience Section */}
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">EXPERIENCE</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">{t('experience')}</h2>
                   <div className="w-8 sm:w-12 h-0.5 bg-red-500 mb-4 sm:mb-6"></div>
                   
                   <div className="space-y-6 sm:space-y-8">
@@ -195,7 +197,7 @@ export default function ResumeSection() {
                               <span className="text-green-400 text-xs font-medium">{calculateExperienceDuration('2025-04-10')}</span>
                             </div>
                           </div>
-                          <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">• Currently working on developing scalable web and mobile applications using React, React Native, and Node.js.</p>
+                          <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">• {t('codeTeakDescription')}</p>
                          
                         </div>
                       </div>
@@ -234,8 +236,8 @@ export default function ResumeSection() {
                             </div>
                           </div>
                           <div className="text-gray-300 text-xs sm:text-sm space-y-2 leading-relaxed">
-                            <p>• Gained hands-on experience developing and managing full-stack web applications using the MERN stack (MongoDB, Express, React, Node.js).</p>
-                            <p>• Collaborated with cross-functional teams to design and implement solutions for various clients, ensuring code quality and performance.</p>
+                            <p>• {t('brototypeDescription')}</p>
+                            <p>• {t('brototypeDescription2')}</p>
                           </div>
                           
                         </div>
@@ -249,7 +251,7 @@ export default function ResumeSection() {
                         <div className="flex-shrink-0">
                           <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-600/20 to-purple-800/20 rounded-lg flex items-center justify-center border border-red-500/20">
                             <Image 
-                              src="/freelancer-logo.png" 
+                              src="/freelance-logo.png" 
                               alt="Freelancer Logo" 
                               width={64}
                               height={64}
@@ -275,8 +277,8 @@ export default function ResumeSection() {
                             </div>
                           </div>
                           <div className="text-gray-300 text-xs sm:text-sm space-y-2 leading-relaxed">
-                            <p>• Delivered end-to-end development solutions, including backend systems with Node.js, frontend design with React and Tailwind CSS, and database management with MongoDB and MySQL.</p>
-                            <p>• Successfully integrated third-party APIs, payment gateways, and other external services to enhance application functionality.</p>
+                            <p>• {t('freelancerDescription')}</p>
+                            <p>• {t('freelancerDescription2')}</p>
                           </div>
                           
                         </div>
@@ -287,7 +289,7 @@ export default function ResumeSection() {
 
                 {/* Projects Section */}
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">PROJECTS</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">{t('projects')}</h2>
                   <div className="w-8 sm:w-12 h-0.5 bg-red-500 mb-4 sm:mb-6"></div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -306,12 +308,12 @@ export default function ResumeSection() {
                       
                       <div className="space-y-3">
                         <div>
-                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">FAYAD AI</h3>
+                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">{t('fayadAiTitle')}</h3>
                           <p className="text-red-400 text-xs font-semibold">PERSONAL AI ASSISTANT</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          A custom-built, conversational AI application created from scratch, demonstrating expertise in modern frontend development and API integration.
+                          {t('fayadAiDescription')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -343,12 +345,12 @@ export default function ResumeSection() {
                       
                       <div className="space-y-3">
                         <div>
-                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">FILE ORGANIZER</h3>
+                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">{t('fileOrganizerTitle')}</h3>
                           <p className="text-red-400 text-xs font-semibold">AUTOMATED DESKTOP APP</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          A cross-platform desktop application that automatically organizes files. Monitors directories in real-time and sorts files into categorized subfolders.
+                          {t('fileOrganizerDescription')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -380,12 +382,12 @@ export default function ResumeSection() {
                       
                       <div className="space-y-3">
                         <div>
-                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">LUXIGOO</h3>
+                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">{t('luxigooTitle')}</h3>
                           <p className="text-red-400 text-xs font-semibold">TRAVEL BOOKING PLATFORM</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          A live travel-based web application enabling users to explore and book travel packages with dynamic search and real-time booking management.
+                          {t('luxigooDescription')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -417,12 +419,12 @@ export default function ResumeSection() {
                       
                       <div className="space-y-3">
                         <div>
-                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">FLORAWY</h3>
+                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">{t('florawyTitle')}</h3>
                           <p className="text-red-400 text-xs font-semibold">FLOWER E-COMMERCE STORE</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          An online flower store allowing users to browse and purchase a variety of floral products with modern e-commerce functionality.
+                          {t('florawyDescription')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -454,12 +456,12 @@ export default function ResumeSection() {
                       
                       <div className="space-y-3">
                         <div>
-                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">YADRO</h3>
+                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">{t('yadroTitle')}</h3>
                           <p className="text-red-400 text-xs font-semibold">AI E-COMMERCE PLATFORM</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          A premium e-commerce platform for wireless headsets with AI-driven product recommendations and personalized shopping experiences.
+                          {t('yadroDescription')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -490,12 +492,12 @@ export default function ResumeSection() {
                       
                       <div className="space-y-3">
                         <div>
-                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">OPTICAL WORLD</h3>
+                          <h3 className="font-bold text-white text-sm sm:text-base mb-1">{t('opticalTitle')}</h3>
                           <p className="text-red-400 text-xs font-semibold">EYEWEAR STORE WEBSITE</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          A modern optical store website showcasing eyewear collections with clean design and responsive layout built with React and Tailwind CSS.
+                          {t('opticalDescription')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -517,7 +519,7 @@ export default function ResumeSection() {
 
                 {/* Education Section */}
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">EDUCATION</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">{t('education')}</h2>
                   <div className="w-8 sm:w-12 h-0.5 bg-red-500 mb-4 sm:mb-6"></div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -550,11 +552,11 @@ export default function ResumeSection() {
                       <div className="space-y-3">
                         <div>
                           <h3 className="font-bold text-white text-sm sm:text-base mb-1">BROTOTYPE ACADEMY</h3>
-                          <p className="text-red-400 text-xs font-semibold">MERN STACK DEVELOPMENT</p>
+                          <p className="text-red-400 text-xs font-semibold">{t('brototypeEdu')}</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          Comprehensive full-stack development certification covering MongoDB, Express.js, React, and Node.js technologies.
+                          {t('brototypeEduDesc')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -599,11 +601,11 @@ export default function ResumeSection() {
                       <div className="space-y-3">
                         <div>
                           <h3 className="font-bold text-white text-sm sm:text-base mb-1">TD HIGHER SECONDARY</h3>
-                          <p className="text-red-400 text-xs font-semibold">COMPUTER SCIENCE</p>
+                          <p className="text-red-400 text-xs font-semibold">{t('tdEdu')}</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          Higher secondary education specializing in Computer Science with focus on programming fundamentals and software development concepts.
+                          {t('tdEduDesc')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -648,11 +650,11 @@ export default function ResumeSection() {
                       <div className="space-y-3">
                         <div>
                           <h3 className="font-bold text-white text-sm sm:text-base mb-1">LEO XIII HIGHER SECONDARY</h3>
-                          <p className="text-red-400 text-xs font-semibold">10th STANDARD</p>
+                          <p className="text-red-400 text-xs font-semibold">{t('leoEdu')}</p>
                         </div>
                         
                         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-                          Completed 10th standard education with strong foundation in mathematics, science, and computer fundamentals.
+                          {t('leoEduDesc')}
                         </p>
                         
                         <div className="flex flex-wrap gap-1 sm:gap-2">
@@ -674,28 +676,28 @@ export default function ResumeSection() {
 
                 {/* Skills Section */}
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">SKILLS</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 tracking-wide">{t('skills')}</h2>
                   <div className="w-8 sm:w-12 h-0.5 bg-red-500 mb-4 sm:mb-6"></div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     {/* Programming */}
                     <div>
-                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">PROGRAMMING</h3>
+                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">{t('programming')}</h3>
                       <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                         <div>
-                          <span className="text-red-500 font-semibold">3+ years:</span>
+                          <span className="text-red-500 font-semibold">{t('years3plus')}:</span>
                           <span className="ml-1 sm:ml-2">JavaScript • Node.js • Express.js • React</span>
                         </div>
                         <div>
-                          <span className="text-red-500 font-semibold">2+ years:</span>
+                          <span className="text-red-500 font-semibold">{t('years2plus')}:</span>
                           <span className="ml-1 sm:ml-2">TypeScript • MongoDB • Python • Java • HTML • CSS</span>
                         </div>
                         <div>
-                          <span className="text-red-500 font-semibold">1+ year:</span>
+                          <span className="text-red-500 font-semibold">{t('year1plus')}:</span>
                           <span className="ml-1 sm:ml-2">Tailwind CSS • Bootstrap • MySQL • PostgreSQL</span>
                         </div>
                         <div>
-                          <span className="text-red-500 font-semibold">Familiar with:</span>
+                          <span className="text-red-500 font-semibold">{t('familiarWith')}:</span>
                           <span className="ml-1 sm:ml-2">React Native • Electron.js • Angular • jQuery • SASS • LESS • Firebase</span>
                         </div>
                       </div>
@@ -703,7 +705,7 @@ export default function ResumeSection() {
 
                     {/* Technologies */}
                     <div>
-                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">TECHNOLOGIES</h3>
+                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">{t('technologies')}</h3>
                       <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                         <p>Git • GitHub • GitLab • Docker • Kubernetes</p>
                         <p>CI/CD (GitLab CI) • AWS • Firebase</p>
@@ -712,28 +714,28 @@ export default function ResumeSection() {
 
                     {/* Additional Skills */}
                     <div>
-                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">ADDITIONAL SKILLS</h3>
+                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">{t('additionalSkills')}</h3>
                       <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
-                        <p>UI/UX • Blender • Responsive Design</p>
-                        <p>Web Performance Optimization • AI Integration</p>
+                        <p>{t('uiUx')}</p>
+                        <p>{t('performance')}</p>
                       </div>
                     </div>
 
                     {/* Coursework */}
                     <div>
-                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">COURSEWORK</h3>
+                      <h3 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">{t('coursework')}</h3>
                       <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                         <div>
-                          <span className="text-red-500 font-semibold">WEB DEVELOPMENT:</span>
-                          <span className="ml-1 sm:ml-2">Backend Development • Frontend Design • Database Management • Responsive Web Design • Cross-Browser Compatibility</span>
+                          <span className="text-red-500 font-semibold">{t('webDev')}:</span>
+                          <span className="ml-1 sm:ml-2">{t('backendDev')} • {t('frontendDesign')} • {t('dbManagement')} • {t('responsiveDesign')} • {t('crossBrowser')}</span>
                         </div>
                         <div>
-                          <span className="text-red-500 font-semibold">SOFTWARE ENGINEERING:</span>
-                          <span className="ml-1 sm:ml-2">Object-Oriented Programming • Agile Methodologies • Version Control with Git • CI/CD Pipelines</span>
+                          <span className="text-red-500 font-semibold">{t('softwareEng')}:</span>
+                          <span className="ml-1 sm:ml-2">{t('oop')} • {t('agile')} • {t('versionControl')} • {t('cicd')}</span>
                         </div>
                         <div>
-                          <span className="text-red-500 font-semibold">DATABASES:</span>
-                          <span className="ml-1 sm:ml-2">Relational Databases (MySQL, PostgreSQL) • NoSQL Databases (MongoDB) • Database Design and Optimization</span>
+                          <span className="text-red-500 font-semibold">{t('databases')}:</span>
+                          <span className="ml-1 sm:ml-2">{t('relationalDb')} • {t('nosqlDb')} • {t('dbDesign')}</span>
                         </div>
                       </div>
                     </div>

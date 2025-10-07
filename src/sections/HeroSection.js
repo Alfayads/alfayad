@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { useLanguage } from '@/context/LanguageContext';
 import Image from "next/image";
 
 export default function HeroSection() {
   const [currentTime, setCurrentTime] = useState('');
   const [batteryLevel, setBatteryLevel] = useState(0);
   const [isCharging, setIsCharging] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     let battery = null;
@@ -93,22 +95,19 @@ export default function HeroSection() {
               {/* Main heading */}
               <div className="space-y-1 sm:space-y-2">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight">
-                  <span className="block">HELLO</span>
+                  <span className="block">{t('HELLO')}</span>
                   <span className="block">I&apos;M</span>
-                  <span className="block">ALFAYAD</span>
+                  <span className="block">{t('heroTitle')}</span>
                 </h1>
               </div>
 
               {/* Descriptive tagline */}
               <div className="space-y-1 sm:space-y-2 max-w-lg mx-auto lg:mx-0">
                 <p className="text-white text-sm sm:text-base md:text-lg font-light leading-relaxed">
-                  I EXPLORE A VIBRANT WORLD
+                  {t('heroSubtitle')}
                 </p>
                 <p className="text-white text-sm sm:text-base md:text-lg font-light leading-relaxed">
-                  OF CREATIVITY WHERE EVERY
-                </p>
-                <p className="text-white text-sm sm:text-base md:text-lg font-light leading-relaxed">
-                  BRUSHSTROKE TELLS A STORY
+                  {t('heroDescription')}
                 </p>
               </div>
             </div>
@@ -124,9 +123,9 @@ export default function HeroSection() {
                       <Image 
                         src="/black-fayad.png" 
                         alt="Profile" 
-                        width={350} 
+                        width={330} 
                         height={450}
-                        className="w-full h-full object-cover"
+                        className="w-52 md:w-80 object-cover"
                       />
                     
                     
@@ -155,7 +154,7 @@ export default function HeroSection() {
 
             {/* Center - Copyright (hidden on mobile) */}
             <div className="hidden sm:block text-xs text-gray-400">
-              © 2024 ALFAYAD
+              {t('copyright')} {t('heroTitle')}
             </div>
 
             {/* Right - Battery */}
