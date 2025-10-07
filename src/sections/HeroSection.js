@@ -94,7 +94,7 @@ export default function HeroSection() {
               <div className="space-y-1 sm:space-y-2">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight">
                   <span className="block">HELLO</span>
-                  <span className="block">I'M</span>
+                  <span className="block">I&apos;M</span>
                   <span className="block">ALFAYAD</span>
                 </h1>
               </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 // Function to calculate experience duration
 const calculateExperienceDuration = (startDate, endDate = null) => {
@@ -58,13 +59,14 @@ export default function ResumeSection() {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -167,9 +169,11 @@ export default function ResumeSection() {
                         {/* Company Image */}
                         <div className="flex-shrink-0">
                           <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-600/20 to-blue-800/20 rounded-lg flex items-center justify-center border border-red-500/20">
-                            <img 
+                            <Image 
                               src="/codeteak-logo.png" 
                               alt="CodeTeak Logo" 
+                              width={64}
+                              height={64}
                               className="w-12 h-12 sm:w-16 rounded-lg sm:h-16 object-contain"
                               onError={(e) => {
                                 e.target.style.display = 'none';
@@ -203,9 +207,11 @@ export default function ResumeSection() {
                         {/* Company Image */}
                         <div className="flex-shrink-0">
                           <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-orange-600/20 to-orange-800/20 rounded-lg flex items-center justify-center border border-red-500/20">
-                            <img 
+                            <Image 
                               src="/brototype-logo.png" 
                               alt="Brototype Logo" 
+                              width={64}
+                              height={64}
                               className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
                               onError={(e) => {
                                 e.target.style.display = 'none';
@@ -242,9 +248,11 @@ export default function ResumeSection() {
                         {/* Company Image */}
                         <div className="flex-shrink-0">
                           <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-600/20 to-purple-800/20 rounded-lg flex items-center justify-center border border-red-500/20">
-                            <img 
+                            <Image 
                               src="/freelancer-logo.png" 
                               alt="Freelancer Logo" 
+                              width={64}
+                              height={64}
                               className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
                               onError={(e) => {
                                 e.target.style.display = 'none';
@@ -518,9 +526,11 @@ export default function ResumeSection() {
                     <div className="bg-black/50 border border-red-500/20 rounded-lg p-4 sm:p-6 hover:border-red-500/40 transition-all duration-300 group">
                       <div className="relative mb-4">
                         <div className="w-full h-32 sm:h-40 bg-gradient-to-br from-orange-600/20 to-orange-800/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-                          <img 
+                          <Image 
                             src="/brototype-logo.png" 
                             alt="Brototype Academy" 
+                            width={320}
+                            height={160}
                             className="w-full h-full object-cover rounded-lg"
                             onError={(e) => {
                               e.target.style.display = 'none';
@@ -565,9 +575,11 @@ export default function ResumeSection() {
                     <div className="bg-black/50 border border-red-500/20 rounded-lg p-4 sm:p-6 hover:border-red-500/40 transition-all duration-300 group">
                       <div className="relative mb-4">
                         <div className="w-full h-32 sm:h-40 bg-gradient-to-br from-green-600/20 to-green-800/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-                          <img 
+                          <Image 
                             src="/td-school.png" 
                             alt="TD Higher Secondary School" 
+                            width={320}
+                            height={160}
                             className="w-full h-full object-cover rounded-lg"
                             onError={(e) => {
                               e.target.style.display = 'none';
@@ -612,9 +624,11 @@ export default function ResumeSection() {
                     <div className="bg-black/50 border border-red-500/20 rounded-lg p-4 sm:p-6 hover:border-red-500/40 transition-all duration-300 group">
                       <div className="relative mb-4">
                         <div className="w-full h-32 sm:h-40 bg-gradient-to-br from-blue-600/20 to-blue-800/20 rounded-lg flex items-center justify-center relative overflow-hidden">
-                          <img 
+                          <Image 
                             src="/leo-school.png" 
                             alt="LEO XIII Higher Secondary School" 
+                            width={320}
+                            height={160}
                             className="w-full h-full object-cover rounded-lg"
                             onError={(e) => {
                               e.target.style.display = 'none';

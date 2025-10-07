@@ -17,13 +17,14 @@ export default function AboutSection() {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -164,8 +165,8 @@ export default function AboutSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <blockquote className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-300 italic leading-relaxed max-w-4xl mx-auto px-4">
-            "Every line of code is a brushstroke in the canvas of digital innovation, 
-            where creativity meets functionality to create extraordinary experiences."
+            &ldquo;Every line of code is a brushstroke in the canvas of digital innovation, 
+            where creativity meets functionality to create extraordinary experiences.&rdquo;
           </blockquote>
           <div className="mt-4 sm:mt-6 text-red-500 font-semibold tracking-wider text-sm sm:text-base">
             — ALFAYAD
