@@ -70,7 +70,7 @@ export default function Header() {
             >
               {t('home')}
             </Link>
-            <a 
+            <Link 
               href="/work" 
               className={`text-sm transition-colors duration-300 ${
                 isScrolled 
@@ -80,7 +80,7 @@ export default function Header() {
               onClick={closeMobileMenu}
             >
               {t('work')}
-            </a>
+            </Link>
             <a 
               href="/resume" 
               className={`text-sm transition-colors duration-300 ${
@@ -158,13 +158,13 @@ export default function Header() {
               >
                 {t('home')}
               </Link>
-              <a 
+              <Link 
                 href="/work" 
                 className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"
                 onClick={closeMobileMenu}
               >
                 {t('work')}
-              </a>
+              </Link>
               <a 
                 href="/resume" 
                 className="text-white hover:text-red-400 transition-colors duration-300 py-2 text-lg font-medium"

@@ -355,12 +355,12 @@ export default function ServicesPage() {
             >
               {t('getFreeConsultation')}
             </a>
-            <a 
+            <Link 
               href="/work"
               className="bg-transparent border border-red-500/20 text-red-400 hover:text-white hover:bg-red-500/10 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300"
             >
               {t('viewAllServices')}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
