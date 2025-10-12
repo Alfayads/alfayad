@@ -117,7 +117,7 @@ export default function Header() {
           </div>
 
           {/* Language Toggle */}
-          <LanguageToggle className="hidden sm:block" />
+          <LanguageToggle className={`hidden sm:block ${isScrolled ? 'ml-6 lg:ml-8' : ''}`} />
 
           {/* Mobile menu button */}
           <button 
