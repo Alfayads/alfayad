@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { getAllProjects } from '@/data/projectsData';
 
 export default function WorkPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,134 +34,7 @@ export default function WorkPage() {
     };
   }, []);
 
-  const projects = [
-    {
-      id: 1,
-      title: "FAYAD AI",
-      subtitle: "PERSONAL AI ASSISTANT",
-      description: "A custom-built, conversational AI application created from scratch, demonstrating expertise in modern frontend development and API integration.",
-      image: "/fayad-ai-preview.png",
-      fallbackEmoji: "🤖",
-      gradient: "from-red-600/20 to-red-800/20",
-      badge: "LIVE",
-      badgeColor: "bg-red-600",
-      link: "https://fayad-ai.vercel.app",
-      technologies: ["React", "Gemini API", "Vercel", "Tailwind CSS"],
-      status: "live"
-    },
-    {
-      id: 2,
-      title: "LUXIGOO TRAVEL",
-      subtitle: "TRAVEL BOOKING PLATFORM",
-      description: "Developed a live travel-based web application enabling users to explore and book travel packages with dynamic search and real-time booking management.",
-      image: "/luxigoo-preview.png",
-      fallbackEmoji: "✈️",
-      gradient: "from-green-600/20 to-green-800/20",
-      badge: "LIVE",
-      badgeColor: "bg-green-600",
-      link: "https://luxigoo.com",
-      technologies: ["MERN Stack", "MongoDB", "Express", "React"],
-      status: "live"
-    },
-    {
-      id: 3,
-      title: "FLORAWY E-COMMERCE",
-      subtitle: "ONLINE FLOWER STORE",
-      description: "Created an online flower store allowing users to browse and purchase a variety of floral products with modern e-commerce functionality.",
-      image: "/florawy-preview.png",
-      fallbackEmoji: "🌸",
-      gradient: "from-pink-600/20 to-pink-800/20",
-      badge: "LIVE",
-      badgeColor: "bg-pink-600",
-      link: "https://florawy.com",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      status: "live"
-    },
-    {
-      id: 4,
-      title: "YADRO E-COMMERCE",
-      subtitle: "PREMIUM HEADSET STORE",
-      description: "Developed a premium e-commerce platform for wireless headsets with AI-driven product recommendations and personalized shopping experiences.",
-      image: "/yadro-preview.png",
-      fallbackEmoji: "🎧",
-      gradient: "from-blue-600/20 to-blue-800/20",
-      badge: "COMPLETED",
-      badgeColor: "bg-blue-600",
-      link: "#",
-      technologies: ["React", "AI/ML", "Node.js", "MySQL"],
-      status: "completed"
-    },
-    {
-      id: 5,
-      title: "OPTICAL WORLD",
-      subtitle: "EYEWEAR COLLECTIONS",
-      description: "Built a modern optical store website showcasing eyewear collections with elegant design and seamless user experience.",
-      image: "/optical-world-preview.png",
-      fallbackEmoji: "👓",
-      gradient: "from-purple-600/20 to-purple-800/20",
-      badge: "LIVE",
-      badgeColor: "bg-purple-600",
-      link: "#",
-      technologies: ["React", "Tailwind CSS", "Responsive Design"],
-      status: "live"
-    },
-    {
-      id: 6,
-      title: "FILE ORGANIZER",
-      subtitle: "AUTOMATED DESKTOP APP",
-      description: "Created an intelligent desktop application that automatically organizes files based on type, date, and custom rules with a clean interface.",
-      image: "/file-organizer-preview.png",
-      fallbackEmoji: "📁",
-      gradient: "from-orange-600/20 to-orange-800/20",
-      badge: "DESKTOP",
-      badgeColor: "bg-orange-600",
-      link: "#",
-      technologies: ["Node.js", "Electron", "File System API"],
-      status: "desktop"
-    },
-    {
-      id: 7,
-      title: "WHOLESALE BILLING SOFTWARE",
-      subtitle: "DESKTOP BILLING SYSTEM",
-      description: "A comprehensive desktop application for managing wholesale and retail billing operations with real-time cloud database synchronization and barcode support.",
-      image: "/wholesale-billing-preview.png",
-      fallbackEmoji: "🧾",
-      gradient: "from-cyan-600/20 to-cyan-800/20",
-      badge: "DESKTOP",
-      badgeColor: "bg-cyan-600",
-      link: "https://github.com/Alfayads/wholesale-billing-software",
-      technologies: ["Electron.js", "React", "Supabase", "Tailwind CSS"],
-      status: "desktop"
-    },
-    {
-      id: 8,
-      title: "QASAR AL HAYA VALET",
-      subtitle: "VALET PARKING BUSINESS",
-      description: "Professional website for valet parking business featuring service booking, real-time availability, and modern UI with seamless user experience.",
-      image: "/qh-valet-preview.png",
-      fallbackEmoji: "🚗",
-      gradient: "from-emerald-600/20 to-emerald-800/20",
-      badge: "LIVE",
-      badgeColor: "bg-emerald-600",
-      link: "https://qhvalet.com/",
-      technologies: ["Next.js", "Tailwind CSS", "Redux", "React"],
-      status: "live"
-    },
-    {
-      id: 9,
-      title: "FD-POSTMAN-CLI",
-      subtitle: "NPM PACKAGE - CLI TOOL",
-      description: "Command-line interface tool for API testing and development. A terminal-based Postman alternative for developers who prefer working in the command line.",
-      image: "/fd-postman-preview.png",
-      fallbackEmoji: "📦",
-      gradient: "from-yellow-600/20 to-yellow-800/20",
-      badge: "NPM",
-      badgeColor: "bg-yellow-600",
-      link: "https://github.com/Alfayads/fd-postman-cli",
-      technologies: ["Node.js", "CLI", "NPM Package", "API Testing"],
-      status: "npm"
-    }
-  ];
+  const projects = getAllProjects();
 
   const testimonials = [
     {
@@ -271,64 +145,59 @@ export default function WorkPage() {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                {/* Project Image */}
-                <div className="relative mb-6">
-                  <div className={`w-full h-48 sm:h-56 bg-gradient-to-br ${project.gradient} rounded-lg flex items-center justify-center relative overflow-hidden`}>
-                    <Image 
-                      src={project.image}
-                      alt={project.title}
-                      width={400}
-                      height={224}
-                      className="w-full h-full object-cover rounded-lg"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className={`w-full h-full bg-gradient-to-br ${project.gradient} rounded-lg flex items-center justify-center absolute inset-0`} style={{display: 'none'}}>
-                      <div className="text-6xl sm:text-7xl">{project.fallbackEmoji}</div>
+                <Link href={`/work/${project.id}`}>
+                  {/* Project Image */}
+                  <div className="relative mb-6 cursor-pointer">
+                    <div className={`w-full h-48 sm:h-56 bg-gradient-to-br ${project.gradient} rounded-lg flex items-center justify-center relative overflow-hidden`}>
+                      <Image 
+                        src={project.image}
+                        alt={project.title}
+                        width={400}
+                        height={224}
+                        className="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.nextSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className={`w-full h-full bg-gradient-to-br ${project.gradient} rounded-lg flex items-center justify-center absolute inset-0`} style={{display: 'none'}}>
+                        <div className="text-6xl sm:text-7xl">{project.fallbackEmoji}</div>
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className={`absolute top-3 right-3 ${project.badgeColor} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
+                      {project.badge}
+                    </div>
                   </div>
-                  <div className={`absolute top-3 right-3 ${project.badgeColor} text-white px-3 py-1 rounded-full text-xs font-semibold`}>
-                    {project.badge}
-                  </div>
-                </div>
 
-                {/* Project Content */}
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="font-bold text-white text-lg sm:text-xl mb-1">{project.title}</h3>
-                    <p className="text-red-400 text-sm font-semibold">{project.subtitle}</p>
-                  </div>
-                  
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="bg-red-600/20 text-red-400 px-2 py-1 rounded text-xs">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Project Link */}
-                  {project.link !== "#" && (
-                    <div className="pt-2">
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-red-400 hover:text-red-300 text-sm font-semibold transition-colors group-hover:translate-x-1 duration-300"
-                      >
-                        View Project →
-                      </a>
+                  {/* Project Content */}
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="font-bold text-white text-lg sm:text-xl mb-1 group-hover:text-red-400 transition-colors">{project.title}</h3>
+                      <p className="text-red-400 text-sm font-semibold">{project.subtitle}</p>
                     </div>
-                  )}
-                </div>
+                    
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span key={techIndex} className="bg-red-600/20 text-red-400 px-2 py-1 rounded text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* View Details Link */}
+                    <div className="pt-2">
+                      <span className="inline-flex items-center text-red-400 hover:text-red-300 text-sm font-semibold transition-all group-hover:translate-x-1 duration-300">
+                        View Details →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
               </div>
             ))}
           </div>
