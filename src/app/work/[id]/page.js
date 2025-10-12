@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import { getProjectById } from '@/data/projectsData';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -38,8 +39,66 @@ export default function ProjectDetailPage() {
     );
   }
 
+  // Schema.org structured data for the project
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.title,
+    description: project.description,
+    author: {
+      "@type": "Person",
+      name: "Alfayad Shameer",
+      url: "https://alfayad.vercel.app"
+    },
+    dateCreated: project.year,
+    url: project.link !== "#" ? project.link : `https://alfayad.vercel.app/work/${project.id}`,
+    keywords: project.technologies.join(", "),
+    image: `https://alfayad.vercel.app${project.image}`,
+    inLanguage: "en"
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://alfayad.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Work",
+        item: "https://alfayad.vercel.app/work"
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: `https://alfayad.vercel.app/work/${project.id}`
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-black">
+      {/* Schema.org Structured Data */}
+      <Script
+        id="project-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectSchema),
+        }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       {/* Hero Section */}
       <div className="relative py-20 sm:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-purple-600/10"></div>
