@@ -21,6 +21,12 @@ export const metadata = {
     default: "Alfayad | Full-Stack Developer & AI Specialist",
     template: "%s | Alfayad Portfolio"
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
   description: "Professional Full-Stack Developer specializing in MERN stack, Next.js, and AI integration. Building modern web applications, e-commerce platforms, and intelligent solutions.",
   keywords: ["Full-Stack Developer", "MERN Stack", "React Developer", "Next.js", "AI Integration", "Web Development", "E-commerce", "Dubai Developer", "JavaScript", "Node.js", "MongoDB", "Express", "Tailwind CSS", "TypeScript", "Alfayad Shameer"],
   authors: [{ name: "Alfayad Shameer", url: "https://alfayad.vercel.app" }],

@@ -214,7 +214,7 @@ This message was sent from your portfolio contact form.
               )}
 
               {/* Contact Form */}
-              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8 form-container" style={{ position: 'relative', zIndex: 5 }}>
                 
                 {/* Personal Information */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -227,9 +227,14 @@ This message was sent from your portfolio contact form.
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors"
+                      autoComplete="name"
+                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors text-base"
                       placeholder="Your full name"
+                      style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                     />
                   </div>
                   
@@ -242,9 +247,14 @@ This message was sent from your portfolio contact form.
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors"
+                      autoComplete="email"
+                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors text-base"
                       placeholder="your@email.com"
+                      style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                     />
                   </div>
                 </div>
@@ -258,8 +268,13 @@ This message was sent from your portfolio contact form.
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors"
+                    onTouchStart={(e) => e.stopPropagation()}
+                    onTouchEnd={(e) => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
+                    autoComplete="tel"
+                    className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors text-base"
                     placeholder="+1 (555) 123-4567"
+                    style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                   />
                 </div>
 
@@ -273,8 +288,12 @@ This message was sent from your portfolio contact form.
                       name="plan"
                       value={formData.plan}
                       onChange={handleInputChange}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors text-base"
+                      style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                     >
                       <option value="">Select a plan</option>
                       {plans.map((plan) => (
@@ -293,8 +312,12 @@ This message was sent from your portfolio contact form.
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors text-base"
+                      style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                     >
                       <option value="">Select project type</option>
                       {projectTypes.map((type) => (
@@ -315,7 +338,11 @@ This message was sent from your portfolio contact form.
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors"
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
+                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors text-base"
+                      style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                     >
                       <option value="">Select budget range</option>
                       {budgets.map((budget) => (
@@ -334,7 +361,11 @@ This message was sent from your portfolio contact form.
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors"
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onTouchEnd={(e) => e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
+                      className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white focus:border-red-500 focus:outline-none transition-colors text-base"
+                      style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                     >
                       <option value="">Select timeline</option>
                       {timelines.map((timeline) => (
@@ -354,10 +385,15 @@ This message was sent from your portfolio contact form.
                     name="description"
                     value={formData.description}
                     onChange={handleInputChange}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    onTouchEnd={(e) => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                     required
                     rows="6"
-                    className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors resize-none"
+                    autoComplete="off"
+                    className="w-full px-4 py-3 bg-black/50 border border-red-500/20 rounded-lg text-white placeholder-gray-400 focus:border-red-500 focus:outline-none transition-colors resize-none text-base"
                     placeholder="Tell me about your project, goals, and any specific requirements..."
+                    style={{ fontSize: '16px', position: 'relative', zIndex: 10 }}
                   />
                 </div>
                 

@@ -17,3 +17,124 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Mobile input fixes - Comprehensive approach */
+input, textarea, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.5rem;
+  font-size: 16px; /* Prevents zoom on iOS */
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Fix for mobile input focus */
+input:focus, textarea:focus, select:focus {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  z-index: 20;
+  position: relative;
+}
+
+/* Allow text selection in input fields when focused */
+input:focus, textarea:focus {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Ensure form elements are above everything */
+form {
+  position: relative;
+  z-index: 5;
+}
+
+form input, form textarea, form select {
+  position: relative;
+  z-index: 10;
+}
+
+/* Fix for iOS input zoom and mobile interactions */
+@media screen and (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+    min-height: 44px; /* iOS minimum touch target */
+    padding: 12px 16px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 2px solid rgba(239, 68, 68, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    border-color: #ef4444;
+    outline: none;
+    z-index: 20;
+    position: relative;
+  }
+  
+  /* Ensure labels don't interfere */
+  label {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Make sure form containers don't block touches */
+  .form-container, form > div {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Prevent double-tap zoom on buttons */
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 10;
+}
+
+/* Additional mobile-specific fixes */
+@media (hover: none) and (pointer: coarse) {
+  /* This targets touch devices */
+  input, textarea, select {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+    position: relative;
+    z-index: 10;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    z-index: 20;
+    position: relative;
+  }
+}
